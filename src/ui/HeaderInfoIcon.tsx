@@ -1,22 +1,20 @@
 import { IconPin, IconPhone, IconEmail } from "@/ui/Icons"
 
-const email = "binayugkiel7@gmail.com";
-const contact_number = "+63 991 926 3048";
-const location = "Cavite, Philippines";
-
-export default function InfoIconHeader(){
+export default function InfoIconHeader({ location, contact_number, email }: { location: string; contact_number: string; email: string }) {
     return (
         <div className="flex flex-wrap gap-5">
-                {[
-                  { icon: <IconPin />,   label: location },
-                  { icon: <IconPhone />, label: contact_number },
-                  { icon: <IconEmail />, label: email },
-                ].map(({ icon, label }) => (
-                  <div key={label} className="flex items-center gap-1.5 text-[#888] text-[0.78rem]">
-                    {icon}
-                    <span>{label}</span>
+                  <div><IconPin /></div>
+                  <div key={location} className="flex items-center gap-1.5 text-[#888] text-[0.78rem]">
+                    <span>{location}</span>
                   </div>
-                ))}
+                  <div><IconPhone /></div>
+                  <div key={contact_number} className="flex items-center gap-1.5 text-[#888] text-[0.78rem]">
+                    <span>{contact_number}</span>
+                  </div>
+                  <div><IconEmail /></div>
+                  <div key={email} className="flex items-center gap-1.5 text-[#888] text-[0.78rem]">
+                    <span>{email}</span>
+                  </div>
               </div>
     )
 }

@@ -15,11 +15,10 @@ import MyTool from '@/ui/MyTool';
 export default async function App() {
   const email = "binayugkiel7@gmail.com";
   const portfolioData: Awaited<ReturnType<typeof getPortfolioData>> = await getPortfolioData(email);
-
   return (
     <div className="min-h-screen bg-beige font-sans">
       <MyHeader profiles={portfolioData} />
-      <MyStrip/>
+      <MyStrip my_strip={portfolioData?.strips?.my_strip ?? ""} />
       {/* MAIN */}
       <div className="max-w-4xl mx-auto px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12">
@@ -38,7 +37,7 @@ export default async function App() {
           </div>
         </div>
       </div>
-      <MyFooter />
+      <MyFooter updated_year={portfolioData?.update_year ?? 0} full_name={portfolioData?.full_name ?? ""} />
     </div>
   )
 }

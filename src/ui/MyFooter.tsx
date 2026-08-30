@@ -1,9 +1,6 @@
 import FooterIcon from "@/ui/FooterIcon";
 
-export const updated_year = "2026";
-export const full_name= "Kiervin Geda Binayug";
-
-export default function MyFooter(){
+export default function MyFooter( { updated_year, full_name }: { updated_year: number; full_name: string }) {
     return (
         <div className="border-t border-border-custom bg-white py-6">
         <div className="max-w-4xl mx-auto px-6 flex justify-between items-center flex-wrap gap-4">

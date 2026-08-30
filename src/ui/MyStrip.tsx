@@ -1,7 +1,4 @@
-const my_strip =
-  "Passionate about technology and building things with code. Currently learning the fundamentals of software development through coursework and personal projects. Open to internships and collaborative opportunities."
-
-  export default function MyStrip(){
+export default function MyStrip({ my_strip }: { my_strip: any }) {
     return (
         <div className="bg-beige2 border-b border-border-custom">
         <div className="max-w-4xl mx-auto px-6 py-5">

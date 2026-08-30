@@ -15,7 +15,7 @@ model profiles {
   location       String
   contact_number String
   initials       String
-  social_links   String?
+  social_links   Json?
   date_created   DateTime       @default(now())
   date_updated   DateTime       @updatedAt
   role           String         @default("user")

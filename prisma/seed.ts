@@ -10,6 +10,17 @@ async function main() {}
       location: "Cavite, Philippines",
       contact_number: "+63 991 926 3048",
       initials: "KB",
+      social_links: [
+        {
+          "github" : "github.com" 
+        },
+        {
+          "linkedin" : "linkedin.com"
+        },
+        {
+          "email" : "binayugkiel7@gmail.com"
+        }
+      ],
       achievements: {
         create: [
           { name: "Dean's List — 1st Year, 2nd Semester" },
