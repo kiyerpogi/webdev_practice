@@ -1,12 +1,18 @@
 import { IconEmail, IconGithub, IconLinkedin } from "@/ui/Icons"
 
+const social_links = {
+  github: "https://github.com/binayugkiel7",
+  linkedin: "https://linkedin.com/in/binayugkiel7",
+  email: "binayugkiel7@gmail.com"
+};
+
 export default function SocLinkHeader(){
     return(
         <div className="flex gap-2">
                 {[
-                  { icon: <IconGithub />,   label: "GitHub" },
-                  { icon: <IconLinkedin />, label: "LinkedIn" },
-                  { icon: <IconEmail />,    label: "Email" },
+                  { icon: <IconGithub />,   label: social_links.github },
+                  { icon: <IconLinkedin />, label: social_links.linkedin },
+                  { icon: <IconEmail />,    label: social_links.email },
                 ].map(({ icon, label }) => (
                   <button
                     key={label}
