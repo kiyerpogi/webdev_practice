@@ -1,21 +1,11 @@
 import { IconEmail, IconGithub, IconLinkedin } from "@/ui/Icons"
 
-export default function SocLinkHeader(){
+export default function HeaderSocLink({ social_links }: { social_links: { github: string; linkedin: string; email: string } }) {
     return(
         <div className="flex gap-2">
-                {[
-                  { icon: <IconGithub />,   label: "GitHub" },
-                  { icon: <IconLinkedin />, label: "LinkedIn" },
-                  { icon: <IconEmail />,    label: "Email" },
-                ].map(({ icon, label }) => (
-                  <button
-                    key={label}
-                    title={label}
-                    className="w-8 h-8 flex items-center justify-center rounded-md border border-[#3d3d3d] text-[#888] hover:text-white hover:border-[#666] transition-all duration-150 bg-transparent cursor-pointer"
-                  >
-                    {icon}
-                  </button>
-                ))}
-              </div>
+          <div><IconGithub />{social_links.github}</div>
+          <div><IconLinkedin />{social_links.linkedin}</div>
+          <div><IconEmail />{social_links.email}</div>
+        </div>
     )
 }

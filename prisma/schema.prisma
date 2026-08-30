@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model profiles {
+  id             Int            @id @default(autoincrement())
+  full_name      String
+  email          String         @unique
+  update_year    Int
+  location       String
+  contact_number String
+  initials       String
+  social_links   Json?
+  date_created   DateTime       @default(now())
+  date_updated   DateTime       @updatedAt
+  role           String         @default("user")
+  status         String         @default("active")
+  profession     String
+  achievements   achievements[]
+  educations     educations[]
+  objectives     objectives?
+  projects       projects[]
+  skills         skills[]
+  softskills     softskills[]
+  strips         strips?
+  tools          tools[]
+}
+
+model achievements {
+  id           Int      @id @default(autoincrement())
+  date_created DateTime @default(now())
+  date_updated DateTime @updatedAt
+  role         String   @default("user")
+  status       String   @default("active")
+  profileId    Int
+  name         String
+  profile      profiles @relation(fields: [profileId], references: [id])
+
+  @@index([profileId], map: "achievements_profileId_fkey")
+}
+
+model educations {
+  id           Int      @id @default(autoincrement())
+  school       String
+  degree       String
+  year         String
+  note         String?
+  date_created DateTime @default(now())
+  date_updated DateTime @updatedAt
+  role         String   @default("user")
+  status       String   @default("active")
+  profileId    Int
+  profile      profiles @relation(fields: [profileId], references: [id])
+
+  @@index([profileId], map: "educations_profileId_fkey")
+}
+
+model objectives {
+  id             Int      @id @default(autoincrement())
+  objective_desc String   @db.LongText
+  date_created   DateTime @default(now())
+  date_updated   DateTime @updatedAt
+  role           String   @default("user")
+  status         String   @default("active")
+  profileId      Int      @unique
+  profile        profiles @relation(fields: [profileId], references: [id])
+}
+
+model projects {
+  id           Int      @id @default(autoincrement())
+  title        String
+  lang         String
+  project_desc String?
+  date_created DateTime @default(now())
+  date_updated DateTime @updatedAt
+  role         String   @default("user")
+  status       String   @default("active")
+  profileId    Int
+  profile      profiles @relation(fields: [profileId], references: [id])
+
+  @@index([profileId], map: "projects_profileId_fkey")
+}
+
+model skills {
+  id           Int      @id @default(autoincrement())
+  skill_name   String
+  level        Int
+  date_created DateTime @default(now())
+  date_updated DateTime @updatedAt
+  role         String   @default("user")
+  status       String   @default("active")
+  profileId    Int
+  profile      profiles @relation(fields: [profileId], references: [id])
+
+  @@index([profileId], map: "skills_profileId_fkey")
+}
+
+model strips {
+  id           Int      @id @default(autoincrement())
+  my_strip     String   @db.LongText
+  date_created DateTime @default(now())
+  date_updated DateTime @updatedAt
+  role         String   @default("user")
+  status       String   @default("active")
+  profileId    Int      @unique
+  profile      profiles @relation(fields: [profileId], references: [id])
+}
+
+model tools {
+  id           Int      @id @default(autoincrement())
+  date_created DateTime @default(now())
+  date_updated DateTime @updatedAt
+  role         String   @default("user")
+  status       String   @default("active")
+  profileId    Int
+  name         Json
+  profile      profiles @relation(fields: [profileId], references: [id])
+
+  @@index([profileId], map: "tools_profileId_fkey")
+}
+
+model softskills {
+  id           Int      @id @default(autoincrement())
+  soft_skill   Json
+  date_created DateTime @default(now())
+  date_updated DateTime @updatedAt
+  role         String   @default("user")
+  status       String   @default("active")
+  profileId    Int
+  profiles     profiles @relation(fields: [profileId], references: [id], map: "softSkills_profileId_fkey")
+
+  @@index([profileId], map: "softSkills_profileId_fkey")
+}
